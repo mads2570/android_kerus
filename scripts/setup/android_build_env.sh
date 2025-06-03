@@ -40,9 +40,24 @@ sudo DEBIAN_FRONTEND=noninteractive \
     libexpat1-dev libgmp-dev '^liblz4-.*' '^liblzma.*' libmpc-dev libmpfr-dev libncurses5-dev \
     libsdl1.2-dev libssl-dev libtool libxml2 libxml2-utils '^lzma.*' lzop \
     maven ncftp ncurses-dev patch patchelf pkg-config pngcrush \
-    pngquant python python2.7 python-all-dev re2c schedtool squashfs-tools subversion \
+    pngquant python-all-dev re2c schedtool squashfs-tools subversion \
     texinfo unzip w3m xsltproc zip zlib1g-dev lzip \
     libxml-simple-perl libswitch-perl apt-utils rsync \
+     sudo apt install python2 -y
+      sudo rm /usr/bin/python
+      sudo ln -s /usr/bin/python2.7 /usr/bin/python
+      
+    if [ $UBUNTU_VERSION == "22.04" ]; then
+        sudo apt-get install git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 lib32ncurses5-dev libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python2 python3 dos2unix libncurses5
+        sudo apt-get install p7zip p7zip-full -y
+        sudo ls -lah /usr/bin/ | grep "python"
+     else
+        sudo apt-get install git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python3 dos2unix libncurses5
+        sudo apt-get install zstd libc6 binutils libc6-dev-i386 gcc g++ p7zip p7zip-full -y
+        sudo ls -lah /usr/bin/ | grep "python"
+     fi
+      
+    
     ${PACKAGES} -y
 
 echo -e "Installing GitHub CLI"
